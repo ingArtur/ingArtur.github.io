@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Resultados</title>
+</head>
+<body>
+  <h1>Resultados</h1>
+  <div id="resultados"></div>
+
+  <script>
+    // Definir un vector de 10 elementos
+    let edades = new Array(10);
+
+    // Variables para almacenar los resultados
+    let menores = 0;
+    let mayores = 0;
+    let adultosMayores = 0;
+    let edadMinima = Infinity;
+    let edadMaxima = -Infinity;
+    let sumaEdades = 0;
+
+    // Pedir las edades y almacenarlas en el vector
+    for (let i = 0; i < edades.length; i++) {
+      let edad = pedirEdad();
+      edades[i] = edad;
+
+      // Actualizar los resultados
+      if (edad < 18) {
+        menores++;
+      } else {
+        mayores++;
+        if (edad >= 60) {
+          adultosMayores++;
+        }
+      }
+      if (edad < edadMinima) {
+        edadMinima = edad;
+      }
+      if (edad > edadMaxima) {
+        edadMaxima = edad;
+      }
+      sumaEdades += edad;
+    }
+
+    // Calcular el promedio de edades
+    let promedioEdades = sumaEdades / edades.length;
+
+    // Mostrar los resultados en HTML
+    let resultadosDiv = document.getElementById("resultados");
+    resultadosDiv.innerHTML += `<p>Menores de edad: ${menores}</p>`;
+    resultadosDiv.innerHTML += `<p>Mayores de edad: ${mayores}</p>`;
+    resultadosDiv.innerHTML += `<p>Adultos mayores: ${adultosMayores}</p>`;
+    resultadosDiv.innerHTML += `<p>Edad mínima: ${edadMinima}</p>`;
+    resultadosDiv.innerHTML += `<p>Edad máxima: ${edadMaxima}</p>`;
+    resultadosDiv.innerHTML += `<p>Promedio de edades: ${promedioEdades}</p>`;
+
+    // Función para pedir una edad y validar que esté en el rango correcto
+    function pedirEdad() {
+      let edad = parseInt(prompt("Ingrese una edad (entre 1 y 120 años):"));
+      while (isNaN(edad) || edad < 1 || edad > 120) {
+        edad = parseInt(prompt("Edad inválida. Ingrese una edad (entre 1 y 120 años):"));
+      }
+      return edad;
+    }
+  </script>
+  <a href="./Index.html">volver al manú</a>
+</body>
+</html>

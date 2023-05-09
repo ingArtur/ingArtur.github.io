@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Encuesta de música</title>
+    <script>
+      // Creamos un objeto para almacenar la información de cada persona
+let persona = {
+  nombre: "",
+  cedula: "",
+  fechaNacimiento: "",
+  correo: "",
+  ciudadResidencia: "",
+  ciudadOrigen: "",
+  cancionesFavoritas: []
+};
+
+// Creamos un arreglo para almacenar la información de todas las personas entrevistadas
+let personasEntrevistadas = [];
+
+// Función para agregar una nueva persona
+function agregarPersona() {
+  // Creamos una nueva persona vacía
+  let nuevaPersona = Object.create(persona);
+  
+  // Pedimos los datos de la persona al usuario
+  nuevaPersona.nombre = prompt("Ingrese el nombre de la persona:");
+  nuevaPersona.cedula = prompt("Ingrese el número de identificación (cédula) de la persona:");
+  nuevaPersona.fechaNacimiento = prompt("Ingrese la fecha de nacimiento de la persona (en formato DD/MM/AAAA):");
+  nuevaPersona.correo = prompt("Ingrese el correo electrónico de la persona:");
+  nuevaPersona.ciudadResidencia = prompt("Ingrese la ciudad de residencia de la persona:");
+  nuevaPersona.ciudadOrigen = prompt("Ingrese la ciudad de origen de la persona:");
+  
+  // Pedimos los datos de las canciones favoritas de la persona
+  let continuar = true;
+  while (continuar) {
+    let cancion = prompt("Ingrese el artista y título de una canción favorita de la persona (separados por un guión)");
+    nuevaPersona.cancionesFavoritas.push(cancion);
+    continuar = confirm("¿Desea ingresar otra canción favorita?");
+  }
+  
+  // Agregamos la nueva persona al arreglo de personas entrevistadas
+  personasEntrevistadas.push(nuevaPersona);
+}
+
+// Función para mostrar la información de una persona particular por posición en el vector
+function mostrarInformacionPersona() {
+  let posicion = prompt("Ingrese la posición de la persona que desea ver (de 0 a " + (personasEntrevistadas.length - 1) + "):");
+  let persona = personasEntrevistadas[posicion];
+  alert("Nombre: " + persona.nombre + "\nCédula: " + persona.cedula + "\nFecha de nacimiento: " + persona.fechaNacimiento + "\nCorreo electrónico: " + persona.correo + "\nCiudad de residencia: " + persona.ciudadResidencia + "\nCiudad de origen: " + persona.ciudadOrigen + "\nCanciones favoritas: " + persona.cancionesFavoritas.join(", "));
+}
+
+// Función para mostrar el menú de opciones
+function mostrarMenu() {
+  let opcion = "";
+  while (opcion !== "salir") {
+    opcion = prompt("Menú:\n\na. Agregar una persona\nb. Mostrar la información personal de una persona particular\n\nIngrese la letra de la opción que desea ejecutar (o escriba 'salir' para terminar el programa):");
+    
+    switch (opcion) {
+      case "a":
+        agregarPersona();
+        break;
+      case "b":
+        mostrarInformacionPersona();
+        break;
+      case "salir":
+        alert("Hasta luego");
+        break;
+      default:
+        alert("Opción inválida");
+    }
+  }
+}
+
+// Llamamos a la función para mostrar el menú de opciones
+mostrarMenu();
+
+    </script>
+  </head>
+  <body>
+    <h1>Encuesta de música</h1>
+    
+    <button onclick="agregarPersona()">Agregar una persona</button>
+    
+    <button onclick="mostrarInformacionPersona()">Mostrar información personal de una persona particular</button>
+    
+    <button onclick="mostrarMenu()">Mostrar menú de opciones</button>
+    
+    <p id="resultado"></p>
+    <a href="./Index.html">volver al menu</a>
+  </body>
+
+</html>

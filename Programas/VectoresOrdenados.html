@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Resultados</title>
+</head>
+<body>
+  <h1>Ordenar vectores</h1>
+  <div id="resultado"></div>
+  
+
+  <script>
+    const size = 5;
+    let vector1 = [];
+    let vector2 = [];
+    let i, j, k;
+
+    // Leer vector 1
+    for (i = 0; i < size; i++) {
+      let value = parseInt(prompt(`Ingrese el valor ${i+1} del vector 1:`));
+      while (i > 0 && value <= vector1[i-1]) {
+        value = parseInt(prompt(`Ingrese un valor mayor que ${vector1[i-1]} para el valor ${i+1} del vector 1:`));
+      }
+      vector1.push(value);
+    }
+
+    // Leer vector 2
+    for (j = 0; j < size; j++) {
+      let value = parseInt(prompt(`Ingrese el valor ${j+1} del vector 2:`));
+      while (j > 0 && value <= vector2[j-1]) {
+        value = parseInt(prompt(`Ingrese un valor mayor que ${vector2[j-1]} para el valor ${j+1} del vector 2:`));
+      }
+      vector2.push(value);
+    }
+
+    // Unir vectores y ordenarlos
+    let mergedVector = [];
+    i = j = k = 0;
+    while (i < size && j < size) {
+      if (vector1[i] < vector2[j]) {
+        mergedVector[k] = vector1[i];
+        i++;
+      } else {
+        mergedVector[k] = vector2[j];
+        j++;
+      }
+      k++;
+    }
+
+    // Completar con elementos restantes (si los hay)
+    while (i < size) {
+      mergedVector[k] = vector1[i];
+      i++;
+      k++;
+    }
+    while (j < size) {
+      mergedVector[k] = vector2[j];
+      j++;
+      k++;
+    }
+
+    // Mostrar resultado en HTML
+    const resultado = document.getElementById("resultado");
+    resultado.innerHTML = `El vector ordenado es: ${mergedVector}`;
+
+  </script>
+<a href="./Index.html">volver al manú</a>  
+</body>
+</html>

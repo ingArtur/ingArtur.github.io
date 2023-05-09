@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULO DE AREAS Y PERIMETROS FIGURAS PLANAS</title>
+</head>
+<body>
+    <div style="background-color: #000080; color: white;">
+        <div style="text-align: center;">
+    
+            <h1>Calculo del área y perimetro de un triangulo</h1>
+    
+            <p>El área de un triángulo es igual a base por altura dividido por 2.</p>
+        <p>El perimetro del triangulo es igual a la suma de la base mas sus lados el cual se calcula teniendo
+            la base y la altura aplicando el teorema de pitagoras </p><br>
+        <img src="../img/Figura triangulo.png" alt=""><br><br>
+        <label for="base">Base:</label>
+        <input type="number" id="base" name="base"><br><br>
+        <label for="altura">Altura:</label>
+        <input type="number" id="altura" name="altura"><br><br>
+            <button onclick="calcularArea()">Calcular Area</button><br><br>
+            <button onclick="calcularPerimetro()">Calcular Perimetro</button><br><br>
+            <p>El área del triangulo es: <span id="resultado_area"></span></p>
+            <p>El perimetro del triangulo es: <span id="resultado_perimetro"></span></p>
+        <script>
+            function calcularArea() {
+            const base = parseFloat(document.getElementById("base").value);
+            const altura = parseFloat(document.getElementById("altura").value);
+            const area = base * altura / 2;
+            document.getElementById("resultado_area").innerText = area;
+        }
+        function calcularPerimetro() {
+            const altura = parseFloat(document.getElementById("altura").value);
+            const base = parseFloat(document.getElementById("base").value);
+            const lado = Math.sqrt(Math.pow(base, 2) + Math.pow(altura, 2));
+            const perimetro = base + (lado * 2);
+            document.getElementById("resultado_perimetro").innerText = perimetro;
+        }
+        </script>
+    </div>
+</div> 
+
+<div style="background-color: #C0392B ; color: white;">
+    <div style="text-align: center;">
+        <h1>Calculo del área y perimetro de un rectangulo</h1>
+    
+            <p>El área de un rectangulo es base por altura</p>
+        <p>El perimetro del rectangulo es la (base mas la altura) por 2</p><br>
+        <img src="../img/RECTANGULO.png" alt=""><br><br>
+        <label for="baseR">Base :</label>
+        <input type="number" id="baseR" name="baseR"><br><br>
+        <label for="alturaR">Altura:</label>
+        <input type="number" id="alturaR" name="alturaR"><br><br>
+            <button onclick="calcularAreaR()">Calcular Area</button><br><br>
+            <button onclick="calcularPerimetroR()">Calcular Perimetro</button><br><br>
+            <p>El área del rectangulo es: <span id="resultado_areaR"></span></p>
+            <p>El perimetro del rectangulo es: <span id="resultado_perimetroR"></span></p>
+        <script>
+            function calcularAreaR() {
+            const baseR = parseFloat(document.getElementById("baseR").value);
+            const alturaR = parseFloat(document.getElementById("alturaR").value);
+            const areaR = baseR * alturaR;
+            document.getElementById("resultado_areaR").innerText = areaR;
+        }
+        function calcularPerimetroR() {
+            const alturaR = parseFloat(document.getElementById("alturaR").value);
+            const baseR = parseFloat(document.getElementById("baseR").value);
+            const perimetroR = 2 * (baseR + alturaR);
+            document.getElementById("resultado_perimetroR").innerText = perimetroR;
+        }
+        </script>
+
+    </div>
+</div>
+
+<div style="background-color: #F1C40F ; color: white;">
+    <div style="text-align: center;">
+        <h1>Calculo del área y perimetro de un cuadrado</h1>
+    
+            <p>El área de un cuadrado es lado al cuadrado</p>
+        <p>El perimetro del cuadrado es la suma de todos sus lados (4L) </p><br>
+        <img src="../img/CUADRADO.png" alt=""><br><br>
+        <label for="ladoC">Lado :</label>
+        <input type="number" id="ladoC" name="ladoC"><br><br>       
+            <button onclick="calcularAreaC()">Calcular Area</button><br><br>
+            <button onclick="calcularPerimetroC()">Calcular Perimetro</button><br><br>
+            <p>El área del cuadrado es: <span id="resultado_areaC"></span></p>
+            <p>El perimetro del cuadrado es: <span id="resultado_perimetroC"></span></p>
+        <script>
+            function calcularAreaC() {
+            const ladoC = parseFloat(document.getElementById("ladoC").value);
+            const areaC = ladoC * ladoC;
+            document.getElementById("resultado_areaC").innerText = areaC;
+        }
+        function calcularPerimetroC() {
+            const ladoC = parseFloat(document.getElementById("ladoC").value);
+            const perimetroC = 4 * ladoC;
+            document.getElementById("resultado_perimetroC").innerText = perimetroC;
+        }
+        </script>
+
+    </div>
+</div>
+
+<div style="background-color: #f10fe6 ; color: white;">
+    <div style="text-align: center;">
+        <h1>Calculo del área y perimetro de un circulo</h1>
+    
+            <p>El área de un circulo se calcula PI por Radio al cuadrado</p>
+        <p>El perimetro del circulo se calcula 2 veces PI por Radio al Cuadrado </p><br>
+        <img src="../img/circulo.png" alt=""><br><br>
+        <label for="radio">radio :</label>
+        <input type="number" id="radio" name="radio"><br><br>       
+            <button onclick="calcularAreaCir()">Calcular Area</button><br><br>
+            <button onclick="calcularPerimetroCir()">Calcular Perimetro</button><br><br>
+            <p>El área del cuadrado es: <span id="resultado_areaCir"></span></p>
+            <p>El perimetro del cuadrado es: <span id="resultado_perimetroCir"></span></p>
+        <script>
+            function calcularAreaCir() {
+            
+                const radio = parseFloat(document.getElementById("radio").value);
+            // Calculando el área del círculo: π * radio al cuadrado
+             const areaCir = (Math.PI) * (Math.pow(radio, 2));
+             document.getElementById("resultado_areaCir").innerText = areaCir;
+            }
+
+            function calcularPerimetroCir(){
+            // Calculando el perímetro del círculo: 2 * π * radio
+            const radio = parseFloat(document.getElementById("radio").value);
+            const perimetroCir = 2 * Math.PI * radio;
+            // Retornando un objeto con ambos valores
+            document.getElementById("resultado_perimetroCir").innerText = perimetroCir;
+        }
+        </script>
+
+    </div>
+</div>
+
+
+<a href="./Index.html">volver al manú</a>
+
+</body>
+</html>
